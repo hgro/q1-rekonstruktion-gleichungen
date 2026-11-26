@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tippkarten: Gleichungen aufstellen und lösen</title>
+<style>
+  :root { --ink:#14202b; --paper:#f4f6f8; --card:#fff; --line:#cbd5de; --accent:#0b5c8a; --accent-soft:#dcebf5; --hi:#f0b429; --hi-soft:#fdf0cf; --ok:#1c7a4e; --ok-soft:#dff2e7; --muted:#4b5a68; --math:"Cambria Math",Cambria,Georgia,serif; color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.5 "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 60px; }
+  h1 { font-family: Georgia, serif; font-size: 28px; line-height: 1.2; margin: 4px 0 6px; }
+  h2 { font-family: Georgia, serif; font-size: 24px; margin: 6px 0 8px; }
+  .lead { color: var(--muted); margin: 0 0 16px; }
+  .m { font-family: var(--math); white-space: nowrap; }
+  .list { display: grid; gap: 10px; }
+  .list a { display: flex; gap: 14px; align-items: center; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-left: 8px solid var(--accent); border-radius: 10px; padding: 12px 16px; }
+  .list a:hover, .list a:focus-visible { background: var(--accent-soft); outline: none; }
+  .list b { display: block; font-size: 19px; }
+  .list small { color: var(--muted); font-size: 16px; }
+  .badge { flex: none; min-width: 52px; text-align: center; font-weight: 700; color: #fff; background: var(--accent); border-radius: 8px; padding: 6px 8px; }
+  .back { display: inline-block; margin: 0 0 12px; color: var(--accent); font-weight: 600; text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+  .aufg { display: none; }
+  .aufg.show { display: block; }
+  .task { background: var(--card); border: 1px solid var(--line); border-left: 8px solid var(--accent); border-radius: 10px; padding: 12px 16px; margin: 0 0 14px; }
+  .task p { margin: 0 0 6px; } .task p:last-child { margin: 0; }
+  .hilfe { display: none; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 0 0 12px; }
+  .hilfe.on { display: block; }
+  .hilfe .lvl { font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
+  .hilfe.l3 { border: 2px solid var(--ok); background: var(--ok-soft); }
+  .hilfe.l3 .lvl { color: var(--ok); }
+  .hilfe p { margin: 0 0 6px; } .hilfe p:last-child { margin-bottom: 0; }
+  .hilfe ul { margin: 4px 0 0; padding-left: 20px; }
+  .hilfe li { margin: 3px 0; }
+  .btn { font: inherit; font-weight: 600; font-size: 18px; padding: 10px 18px; border-radius: 8px; border: 2px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  .btn:hover { filter: brightness(1.1); }
+  .btn[hidden] { display: none; }
+  .btn.ghost { background: var(--card); color: var(--accent); }
+  .merk { background: var(--hi-soft); border: 2px solid var(--hi); border-radius: 10px; padding: 8px 14px; margin: 0 0 12px; font-size: 17px; }
+  table { border-collapse: collapse; width: 100%; font-size: 16px; margin-top: 6px; }
+  th, td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; }
+  th { background: var(--accent-soft); }
+  details { margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; font-size: 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 15px; background: #eef2f5; padding: 1px 5px; border-radius: 4px; }
+  #links td:first-child { white-space: nowrap; }
+  .end { margin-top: 10px; }
+  button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--hi); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+
+  <div id="start">
+    <h1>Tippkarten</h1>
+    <p class="lead">Gleichungen aufstellen und lösen. Versuchen Sie es zuerst allein und öffnen Sie nur so viele Hilfen, wie Sie brauchen. Wählen Sie Ihre Aufgabe:</p>
+    <nav class="list" aria-label="Aufgaben">
+      <a href="#aufgabe-1"><span class="badge">1</span><span><b>Von den Bedingungen zur Funktion</b><small>Graph 1: Gleichungen aufstellen, LGS-Rechner, Probe</small></span></a>
+      <a href="#aufgabe-2"><span class="badge">2</span><span><b>Mias Lösung prüfen</b><small>Den Fehler finden, erklären und korrigieren</small></span></a>
+      <a href="#aufgabe-3"><span class="badge">3</span><span><b>Zusatz: Noch ein Graph</b><small>Berührpunkt, y-Achse, Hochpunkt</small></span></a>
+    </nav>
+    <details>
+      <summary>Für Lehrkräfte: Verweise für QR-Codes</summary>
+      <p>Hängen Sie den Verweis an die Adresse dieser Seite an, zum Beispiel <code>…/Tippkarten#aufgabe-2</code>. Mit <code>-hilfe-1</code> bis <code>-hilfe-3</code> öffnet die Seite die Hilfen bis zu dieser Stufe.</p>
+      <table id="links"><tr><th>Verweis</th><th>Zeigt</th></tr>
+        <tr><td><code>#aufgabe-1</code></td><td>Aufgabe 1</td></tr>
+        <tr><td><code>#aufgabe-2</code></td><td>Aufgabe 2 (Mias Lösung)</td></tr>
+        <tr><td><code>#aufgabe-3</code></td><td>Aufgabe 3 (Zusatz)</td></tr>
+        <tr><td><code>#aufgabe-2-hilfe-2</code></td><td>Beispiel: Aufgabe 2, Hilfen 1 und 2 schon offen</td></tr>
+      </table>
+    </details>
+  </div>
+
+  <!-- Aufgabe 1 -->
+  <section class="aufg" id="aufgabe-1" aria-labelledby="h-1">
+    <a class="back" href="#">← Alle Aufgaben</a>
+    <h2 id="h-1">Aufgabe 1: Von den Bedingungen zur Funktion</h2>
+    <div class="task"><p>Graph 1 gehört zu einer Funktion <span class="m">f</span> dritten Grades mit dem Hochpunkt <span class="m">H(2 | 6)</span> und dem Wendepunkt <span class="m">W(0 | 2)</span>. Schreiben Sie Ansatz und Ableitungen auf, schreiben Sie jede Bedingung als Gleichung mit <span class="m">a, b, c, d</span>, lösen Sie das Gleichungssystem mit dem <a href="https://hgro.github.io/q1-lgs-rechner/" target="_blank" rel="noopener">LGS-Rechner</a> und prüfen Sie Ihr Ergebnis.</p></div>
+    <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Schreiben Sie zuerst den <b>Ansatz</b> <span class="m">f(x) = ax³ + bx² + cx + d</span> und seine <b>Ableitungen</b> auf. Sie stehen in Ihrer Übersicht.</p><p>Jede Bedingung aus der letzten Stunde wird zu <b>einer Gleichung</b>: Sie setzen die Zahlen in die passende Ableitung ein.</p></div>
+    <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><ul>
+      <li><span class="m">f(2) = 6</span>: Setzen Sie <span class="m">x = 2</span> in <span class="m">f(x)</span> ein. Das ergibt <span class="m">a · 2³ + b · 2² + c · 2 + d = 6</span>. Rechnen Sie die Potenzen aus.</li>
+      <li><span class="m">f′(2) = 0</span>: Setzen Sie <span class="m">x = 2</span> in <span class="m">f′(x) = 3ax² + 2bx + c</span> ein.</li>
+      <li><span class="m">f(0) = 2</span>: Bei <span class="m">x = 0</span> fallen fast alle Terme weg.</li>
+      <li><span class="m">f″(0) = 0</span>: Setzen Sie <span class="m">x = 0</span> in <span class="m">f″(x) = 6ax + 2b</span> ein.</li></ul>
+      <p><b>LGS-Rechner:</b> Wählen Sie vier Unbekannte. Fehlt eine Variable in einer Gleichung, ist ihr Koeffizient 0.</p></div>
+    <div class="hilfe l3" data-lvl="3"><p class="lvl">Hilfe 3: Lösung zum Vergleichen</p>
+      <p><span class="m">I: 8a + 4b + 2c + d = 6</span><br><span class="m">II: 12a + 4b + c = 0</span><br><span class="m">III: d = 2</span><br><span class="m">IV: 2b = 0</span></p>
+      <p>Lösung: <span class="m">a = −¼, b = 0, c = 3, d = 2</span>, also <span class="m">f(x) = −¼x³ + 3x + 2</span>.</p>
+      <p>Probe: <span class="m">f(2) = 6</span>, <span class="m">f′(2) = 0</span>, <span class="m">f(0) = 2</span>, <span class="m">f″(0) = 0</span>.</p></div>
+    <button class="btn" type="button">Hilfe 1 anzeigen</button>
+  </section>
+
+  <!-- Aufgabe 2 -->
+  <section class="aufg" id="aufgabe-2" aria-labelledby="h-2">
+    <a class="back" href="#">← Alle Aufgaben</a>
+    <h2 id="h-2">Aufgabe 2: Mias Lösung prüfen</h2>
+    <div class="task"><p>Mia hat die Funktion zu Graph 2 (Hochpunkt <span class="m">H(0 | 0)</span>, Tiefpunkt <span class="m">T(2 | −4)</span>) bestimmt. In ihrer Rechnung steckt ein Fehler. Finden Sie die Zeile mit dem ersten Fehler, erklären Sie ihn, zeigen Sie ihn mit einer Probe und korrigieren Sie die Rechnung.</p></div>
+    <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Vergleichen Sie <b>jede Zeile</b> von Mias Rechnung mit Ihrer Übersicht. Beginnen Sie oben. Welche Zeile weicht als erste ab?</p><p>Ein Fehler kann in späteren Zeilen weiterwirken. Suchen Sie den <b>ersten</b>.</p></div>
+    <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><ul>
+      <li><b>Fehler finden:</b> Wie wird <span class="m">bx²</span> abgeleitet? Vergleichen Sie mit der Zeile „Ableitung“. Welche spätere Zeile benutzt diese Ableitung?</li>
+      <li><b>Probe:</b> Leiten Sie Mias Funktion <span class="m">f(x) = 1/4 x³ − 3/2 x²</span> richtig ab. Setzen Sie <span class="m">x = 2</span> in <span class="m">f′</span> ein. Was müsste herauskommen?</li>
+      <li><b>Mias Probe:</b> Welche der vier Bedingungen hat sie geprüft? Welche nicht?</li>
+      <li><b>Korrektur:</b> Stellen Sie Zeile IV neu auf und lösen Sie das System mit dem <a href="https://hgro.github.io/q1-lgs-rechner/" target="_blank" rel="noopener">LGS-Rechner</a>. Prüfen Sie am Ende alle vier Bedingungen.</li></ul></div>
+    <div class="hilfe l3" data-lvl="3"><p class="lvl">Hilfe 3: Lösung zum Vergleichen</p><ul>
+      <li><b>Erster Fehler:</b> Zeile „Ableitung“. Mia schreibt <span class="m">3ax² + bx + c</span>, richtig ist <span class="m">3ax² + 2bx + c</span>, weil die Ableitung von <span class="m">bx²</span> gleich <span class="m">2bx</span> ist.</li>
+      <li><b>Folge:</b> Zeile IV müsste <span class="m">12a + 4b + c = 0</span> heißen.</li>
+      <li><b>Probe:</b> Mit <span class="m">f′(x) = 3/4 x² − 3x</span> ist <span class="m">f′(2) = −3 ≠ 0</span>. Die Tangente in <span class="m">T</span> ist nicht waagerecht.</li>
+      <li><b>Mias Probe:</b> Sie hat nur <span class="m">f(2) = −4</span> geprüft, die Bedingungen mit <span class="m">f′</span> nicht.</li>
+      <li><b>Korrektur:</b> <span class="m">d = 0, c = 0, 8a + 4b = −4, 12a + 4b = 0</span> ergibt <span class="m">a = 1, b = −3</span>, also <span class="m">f(x) = x³ − 3x²</span>.</li></ul></div>
+    <button class="btn" type="button">Hilfe 1 anzeigen</button>
+  </section>
+
+  <!-- Aufgabe 3 -->
+  <section class="aufg" id="aufgabe-3" aria-labelledby="h-3">
+    <a class="back" href="#">← Alle Aufgaben</a>
+    <h2 id="h-3">Aufgabe 3 (Zusatz): Noch ein Graph</h2>
+    <div class="task"><p>Der Graph einer Funktion <span class="m">h</span> dritten Grades berührt die x-Achse bei <span class="m">x = 1</span>, schneidet die y-Achse bei <span class="m">2</span> und hat bei <span class="m">x = −1</span> einen Hochpunkt. Bestimmen Sie <span class="m">h(x)</span>: Bedingungen, Gleichungen, <a href="https://hgro.github.io/q1-lgs-rechner/" target="_blank" rel="noopener">LGS-Rechner</a>, Probe.</p></div>
+    <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Übersetzen Sie jede Angabe einzeln. Nutzen Sie die Tabelle „Eigenschaft → Bedingung“ aus Ihrer Übersicht.</p><ul><li>„berührt die x-Achse bei 1“: Nullstelle plus waagerechte Tangente</li><li>„schneidet die y-Achse bei 2“: ein Punkt auf dem Graphen</li><li>„Hochpunkt bei <span class="m">x = −1</span>“: nur die Stelle ist bekannt, also nur die waagerechte Tangente</li></ul></div>
+    <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><p>Die Bedingungen lauten <span class="m">h(1) = 0</span>, <span class="m">h′(1) = 0</span>, <span class="m">h(0) = 2</span> und <span class="m">h′(−1) = 0</span>.</p><p>Setzen Sie die Stellen in <span class="m">h(x) = ax³ + bx² + cx + d</span> und <span class="m">h′(x) = 3ax² + 2bx + c</span> ein. Aus jeder Bedingung wird eine Gleichung mit <span class="m">a, b, c, d</span>.</p></div>
+    <div class="hilfe l3" data-lvl="3"><p class="lvl">Hilfe 3: Lösung zum Vergleichen</p>
+      <p><span class="m">I: a + b + c + d = 0</span><br><span class="m">II: 3a + 2b + c = 0</span><br><span class="m">III: d = 2</span><br><span class="m">IV: 3a − 2b + c = 0</span></p>
+      <p>Lösung: <span class="m">a = 1, b = 0, c = −3, d = 2</span>, also <span class="m">h(x) = x³ − 3x + 2</span>.</p>
+      <p>Probe: <span class="m">h(1) = 0</span>, <span class="m">h′(1) = 0</span>, <span class="m">h(0) = 2</span>, <span class="m">h′(−1) = 0</span>.</p></div>
+    <button class="btn" type="button">Hilfe 1 anzeigen</button>
+  </section>
+
+</main>
+<script>
+(function () {
+  "use strict";
+  var start = document.getElementById("start");
+  var sections = Array.prototype.slice.call(document.querySelectorAll(".aufg"));
+  var current = null;
+
+  function setLevel(sec, n) {
+    var hs = sec.querySelectorAll(".hilfe"), btn = sec.querySelector(".btn");
+    Array.prototype.forEach.call(hs, function (h) {
+      h.classList.toggle("on", parseInt(h.getAttribute("data-lvl"), 10) <= n);
+    });
+    sec.setAttribute("data-level", String(n));
+    if (n >= 3) { btn.hidden = true; }
+    else { btn.hidden = false; btn.textContent = n === 2 ? "Hilfe 3 anzeigen (Lösung)" : "Hilfe " + (n + 1) + " anzeigen"; }
+  }
+
+  function route() {
+    var m = /^#(aufgabe-[0-9a-z]+?)(?:-hilfe-([1-3]))?$/.exec(location.hash || "");
+    var sec = m ? document.getElementById(m[1]) : null;
+    sections.forEach(function (s) { s.classList.remove("show"); });
+    if (!sec || sections.indexOf(sec) < 0) { start.style.display = ""; current = null; document.title = "Tippkarten: Gleichungen aufstellen und lösen"; window.scrollTo(0, 0); return; }
+    start.style.display = "none";
+    sec.classList.add("show");
+    document.title = sec.querySelector("h2").textContent;
+    if (current !== sec) { setLevel(sec, m[2] ? parseInt(m[2], 10) : 0); window.scrollTo(0, 0); }
+    else if (m[2]) { setLevel(sec, Math.max(parseInt(m[2], 10), parseInt(sec.getAttribute("data-level") || "0", 10))); }
+    current = sec;
+  }
+
+  sections.forEach(function (sec) {
+    setLevel(sec, 0);
+    sec.querySelector(".btn").addEventListener("click", function () {
+      var n = Math.min(3, parseInt(sec.getAttribute("data-level") || "0", 10) + 1);
+      setLevel(sec, n);
+      try { history.replaceState(null, "", "#" + sec.id + "-hilfe-" + n); } catch (e) {}
+    });
+  });
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
