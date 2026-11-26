@@ -47,6 +47,7 @@
   #links td:first-child { white-space: nowrap; }
   .end { margin-top: 10px; }
   button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--hi); outline-offset: 2px; }
+  .formel { background: var(--paper); border-left: 4px solid var(--accent); border-radius: 6px; padding: 6px 12px; }
 </style>
 </head>
 <body>
@@ -77,7 +78,7 @@
     <a class="back" href="#">← Alle Aufgaben</a>
     <h2 id="h-1">Aufgabe 1: Von den Bedingungen zur Funktion</h2>
     <div class="task"><p>Graph 1 gehört zu einer Funktion <span class="m">f</span> dritten Grades mit dem Hochpunkt <span class="m">H(2 | 6)</span> und dem Wendepunkt <span class="m">W(0 | 2)</span>. Schreiben Sie Ansatz und Ableitungen auf, schreiben Sie jede Bedingung als Gleichung mit <span class="m">a, b, c, d</span>, lösen Sie das Gleichungssystem mit dem <a href="https://hgro.github.io/q1-lgs-rechner/" target="_blank" rel="noopener">LGS-Rechner</a> und prüfen Sie Ihr Ergebnis.</p></div>
-    <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Schreiben Sie zuerst den <b>Ansatz</b> <span class="m">f(x) = ax³ + bx² + cx + d</span> und seine <b>Ableitungen</b> auf. Sie stehen in Ihrer Übersicht.</p><p>Jede Bedingung aus der letzten Stunde wird zu <b>einer Gleichung</b>: Sie setzen die Zahlen in die passende Ableitung ein.</p></div>
+    <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Schreiben Sie zuerst den <b>Ansatz</b> und seine <b>Ableitungen</b> auf (auch in Ihrer Übersicht):</p><p class="formel"><span class="m">f(x) = ax³ + bx² + cx + d</span><br><span class="m">f′(x) = 3ax² + 2bx + c</span><br><span class="m">f″(x) = 6ax + 2b</span></p><p>Jede Bedingung aus der letzten Stunde wird zu <b>einer Gleichung</b>: Sie setzen die Zahlen in die passende Ableitung ein.</p></div>
     <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><ul>
       <li><span class="m">f(2) = 6</span>: Setzen Sie <span class="m">x = 2</span> in <span class="m">f(x)</span> ein. Das ergibt <span class="m">a · 2³ + b · 2² + c · 2 + d = 6</span>. Rechnen Sie die Potenzen aus.</li>
       <li><span class="m">f′(2) = 0</span>: Setzen Sie <span class="m">x = 2</span> in <span class="m">f′(x) = 3ax² + 2bx + c</span> ein.</li>
@@ -98,6 +99,7 @@
     <div class="task"><p>Mia hat die Funktion zu Graph 2 (Hochpunkt <span class="m">H(0 | 0)</span>, Tiefpunkt <span class="m">T(2 | −4)</span>) bestimmt. In ihrer Rechnung steckt ein Fehler. Finden Sie die Zeile mit dem ersten Fehler, erklären Sie ihn, zeigen Sie ihn mit einer Probe und korrigieren Sie die Rechnung.</p></div>
     <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Vergleichen Sie <b>jede Zeile</b> von Mias Rechnung mit Ihrer Übersicht. Beginnen Sie oben. Welche Zeile weicht als erste ab?</p><p>Ein Fehler kann in späteren Zeilen weiterwirken. Suchen Sie den <b>ersten</b>.</p></div>
     <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><ul>
+      <li><b>Ableitungen zum Vergleichen:</b> <span class="m">f′(x) = 3ax² + 2bx + c</span> und <span class="m">f″(x) = 6ax + 2b</span></li>
       <li><b>Fehler finden:</b> Wie wird <span class="m">bx²</span> abgeleitet? Vergleichen Sie mit der Zeile „Ableitung“. Welche spätere Zeile benutzt diese Ableitung?</li>
       <li><b>Probe:</b> Leiten Sie Mias Funktion <span class="m">f(x) = 1/4 x³ − 3/2 x²</span> richtig ab. Setzen Sie <span class="m">x = 2</span> in <span class="m">f′</span> ein. Was müsste herauskommen?</li>
       <li><b>Mias Probe:</b> Welche der vier Bedingungen hat sie geprüft? Welche nicht?</li>
@@ -117,7 +119,7 @@
     <h2 id="h-3">Aufgabe 3 (Zusatz): Noch ein Graph</h2>
     <div class="task"><p>Der Graph einer Funktion <span class="m">h</span> dritten Grades berührt die x-Achse bei <span class="m">x = 1</span>, schneidet die y-Achse bei <span class="m">2</span> und hat bei <span class="m">x = −1</span> einen Hochpunkt. Bestimmen Sie <span class="m">h(x)</span>: Bedingungen, Gleichungen, <a href="https://hgro.github.io/q1-lgs-rechner/" target="_blank" rel="noopener">LGS-Rechner</a>, Probe.</p></div>
     <div class="hilfe" data-lvl="1"><p class="lvl">Hilfe 1</p><p>Übersetzen Sie jede Angabe einzeln. Nutzen Sie die Tabelle „Eigenschaft → Bedingung“ aus Ihrer Übersicht.</p><ul><li>„berührt die x-Achse bei 1“: Nullstelle plus waagerechte Tangente</li><li>„schneidet die y-Achse bei 2“: ein Punkt auf dem Graphen</li><li>„Hochpunkt bei <span class="m">x = −1</span>“: nur die Stelle ist bekannt, also nur die waagerechte Tangente</li></ul></div>
-    <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><p>Die Bedingungen lauten <span class="m">h(1) = 0</span>, <span class="m">h′(1) = 0</span>, <span class="m">h(0) = 2</span> und <span class="m">h′(−1) = 0</span>.</p><p>Setzen Sie die Stellen in <span class="m">h(x) = ax³ + bx² + cx + d</span> und <span class="m">h′(x) = 3ax² + 2bx + c</span> ein. Aus jeder Bedingung wird eine Gleichung mit <span class="m">a, b, c, d</span>.</p></div>
+    <div class="hilfe" data-lvl="2"><p class="lvl">Hilfe 2</p><p>Die Bedingungen lauten <span class="m">h(1) = 0</span>, <span class="m">h′(1) = 0</span>, <span class="m">h(0) = 2</span> und <span class="m">h′(−1) = 0</span>.</p><p>Setzen Sie die Stellen in <span class="m">h(x) = ax³ + bx² + cx + d</span> und <span class="m">h′(x) = 3ax² + 2bx + c</span> ein (<span class="m">h″(x) = 6ax + 2b</span>). Aus jeder Bedingung wird eine Gleichung mit <span class="m">a, b, c, d</span>.</p></div>
     <div class="hilfe l3" data-lvl="3"><p class="lvl">Hilfe 3: Lösung zum Vergleichen</p>
       <p><span class="m">I: a + b + c + d = 0</span><br><span class="m">II: 3a + 2b + c = 0</span><br><span class="m">III: d = 2</span><br><span class="m">IV: 3a − 2b + c = 0</span></p>
       <p>Lösung: <span class="m">a = 1, b = 0, c = −3, d = 2</span>, also <span class="m">h(x) = x³ − 3x + 2</span>.</p>
